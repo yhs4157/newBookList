@@ -2,8 +2,10 @@
     "compilerOptions": {
         "esModuleInterop": true,
         "sourceMap": true,
-        "lib": ["ES2020", "DOM"],
+        "lib": ["es6", "DOM"],
         "noImplicitAny": true,
+        "noImplicitThis": true,
+        "strictNullChecks": true,
         "removeComments": true,
         "module": "esnext",
         "moduleResolution": "Node",

@@ -13,7 +13,7 @@ import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
 const config: Configuration = {
-  name: 'sleact',
+  name: 'newBookList',
   mode: isDevelopment ? 'development' : 'production',
   devtool: isDevelopment ? 'hidden-source-map' : 'inline-source-map',
   resolve: {
