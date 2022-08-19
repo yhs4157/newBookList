@@ -1,11 +1,15 @@
-import React from 'react'; 
+import React, {FC} from 'react'; 
+import {Routes, Route} from 'react-router-dom';
+import Homepage from '@pages/app'; 
+import Test from '@pages/test_material';
 
-const App = () => {
-    return(
-        <div>
-            <h1>Hello World!</h1>
-        </div>
-    );
+const App: FC = () => {
+    return (
+        <Routes>
+                <Route path="/" element={<Homepage/>} />
+                <Route path="/test" element={<Test/>} />
+        </Routes>
+    )
 }
 
 export default App; 
