@@ -49,7 +49,12 @@ const DashBoard = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography 
+          variant="h6" 
+          component="div" 
+          sx={{ flexGrow: 1 }}
+          // flex-grow를 통해 Typography을 크기를 끝으로 밀어냄. 
+          >
             Clipped drawer
           </Typography>
           <div>
