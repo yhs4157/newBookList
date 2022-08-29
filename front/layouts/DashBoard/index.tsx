@@ -25,7 +25,12 @@ import {
   Paper,
 } from '@mui/material';
 
+import { USERS } from '@pages/test'; 
+
 const drawerWidth = 240;
+
+
+console.log(USERS); 
 
 const DashBoard = () => {
     const [open, setOpen] = useState(false); 
