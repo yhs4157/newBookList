@@ -23,7 +23,10 @@ import BookList from '@components/BookList';
 import {
   Grid, 
   Paper,
+  Container,
 } from '@mui/material';
+
+import BookBox from '@components/BookBox'; 
 
 import { USERS } from '@pages/test'; 
 
@@ -140,14 +143,12 @@ const DashBoard = () => {
         </Box>
       </Drawer>
       }
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Container fixed component="main" sx={{ flexGrow: 1, p: 3 }}>
+        <Toolbar/>
         <Grid sx={{ flexGrow: 1, flexShrink: 1,}}>
-
-          <Paper>Test</Paper>
-          <Paper>Test</Paper>
-          <Paper>Test</Paper>
+          <BookBox />
         </Grid>
-      </Box>
+      </Container>
     </Box>
   );
 }
