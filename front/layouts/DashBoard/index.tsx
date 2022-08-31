@@ -24,9 +24,8 @@ import {
   Grid, 
   Paper,
   Container,
+  Stack,
 } from '@mui/material';
-
-import BookBox from '@components/BookBox'; 
 
 import { USERS } from '@pages/test'; 
 
@@ -145,9 +144,25 @@ const DashBoard = () => {
       }
       <Container fixed component="main" sx={{ flexGrow: 1, p: 3 }}>
         <Toolbar/>
-        <Grid sx={{ flexGrow: 1, flexShrink: 1,}}>
-          <BookBox />
-        </Grid>
+        <Stack
+          direction="row"
+          justifyContent="flex-start"
+          alignItems="flex-start"
+          spacing={10}
+          sx={{ 
+            flexGrow: 1, 
+            flexShrink: 1, 
+            height: "100vh", 
+            width: "100vw",
+          }}
+          >
+          <BookList/>
+          <BookList/>
+          <BookList/>
+          <BookList/>
+          <BookList/>
+        </Stack>
+        <Toolbar/>
       </Container>
     </Box>
   );
