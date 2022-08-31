@@ -84,11 +84,11 @@ const BookBox = () => {
                 <hr />
                 <div className="button" style={button_style}>
                     <span>
-                        <Button variant="outlined">Outlined</Button>
+                        <Button variant="outlined">It's Read</Button>
 
                     </span>
                     <span>
-                        <Button variant="outlined">Outlined</Button>
+                        <Button variant="outlined">Don't Read</Button>
 
                     </span>
                 </div>
