@@ -28,6 +28,7 @@ import {
 } from '@mui/material';
 
 import { USERS } from '@pages/test'; 
+import UserModal from '@components/UserModal';
 
 const drawerWidth = 240;
 
@@ -35,18 +36,26 @@ const drawerWidth = 240;
 console.log(USERS); 
 
 const DashBoard = () => {
-    const [open, setOpen] = useState(false); 
+    const [openMenu, setOpenMenu] = useState(false); 
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
+    const [openUserModal, setOpenUserModal] = useState(false); 
+
     const onClickOpen = useCallback((e:any) => {
-        setOpen((prev) => !prev);
+        setOpenMenu((prev) => !prev);
     }, []);
 
-  
+  const CloseUserModal = useCallback(() => {
+    setOpenUserModal((prev) => !prev)
+  }, []);
+
+  const ToggleUserModal = useCallback(() => {
+    setOpenUserModal(true);
+  }, []);
 
   const handleMenu = useCallback(() => {}, []);
-  const handleClose = useCallback(() => {}, []);
-
+  const handleCloseMenu = useCallback(() => {}, []);
+  
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -76,10 +85,15 @@ const DashBoard = () => {
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                onClick={handleMenu}
+                onClick={ToggleUserModal}
                 color="inherit"
               >
-                <AccountCircle />
+                <AccountCircle 
+                id="userIcon"
+                />
+                <UserModal
+                open={openUserModal}
+                />
               </IconButton>
               <Menu
                 id="menu-appbar"
@@ -94,16 +108,16 @@ const DashBoard = () => {
                   horizontal: 'right',
                 }}
                 open={Boolean(anchorEl)}
-                onClose={handleClose}
+                onClose={handleCloseMenu}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={handleCloseMenu}>Profile</MenuItem>
+                <MenuItem onClick={handleCloseMenu}>My account</MenuItem>
               </Menu>
             </div>
         </Toolbar>
       </AppBar>
       {
-      open && 
+      openMenu && 
       <Drawer
         variant="permanent"
         sx={{
