@@ -10,21 +10,27 @@ type VirtualElement = {
 };  
 
 interface Props {
-    open : boolean; 
-    // anchorEl : VirtualElement;
+    id : "simple-popper" | undefined; 
+    open: boolean;  
+    anchorEl : null | HTMLElement;
 };
 
-const UserModal:FC<Props> = ({open}) => {
+const UserModal:FC<Props> = ({id, open, anchorEl}) => {
     const [User, setUser] = useState('');
-    const [Avatar, setAvatar] = useState(''); 
-
+    const [Avatar, setAvatar] = useState('');
+    
     return (
         <div>
-            <Popper
-            open={open}
+            <Popper 
+            id={id} 
+            open={open} 
+            anchorEl={anchorEl}
+            sx={{zIndex: "100000"}}
             >
-                <Box>
-                    Test
+                <Box sx={{backgroundColor: "white", width: "300px", height: "300px"}}>
+                    Testaskldjflkajs;dlkfj;lajksdf
+                    asjdkl;fja;lksjdfkl;ja;lsdf
+                    ajksdjf;lkajs;kl
                 </Box>
             </Popper>
         </div>

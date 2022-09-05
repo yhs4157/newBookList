@@ -39,6 +39,15 @@ const DashBoard = () => {
     const [openMenu, setOpenMenu] = useState(false); 
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
+    const [userPopperAnchorEl, setUserAnchorEl] = React.useState<null | HTMLElement>(null);
+
+    const handleUserPopperAnchorEl = (event: React.MouseEvent<HTMLElement>) => {
+      setUserAnchorEl(userPopperAnchorEl ? null : event.currentTarget);
+    };
+
+    const userPopperOpen = Boolean(userPopperAnchorEl);
+    const userPopperId = userPopperOpen ? 'simple-popper' : undefined;
+
     const [openUserModal, setOpenUserModal] = useState(false); 
 
     const onClickOpen = useCallback((e:any) => {
@@ -60,7 +69,7 @@ const DashBoard = () => {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
-        <Toolbar>
+        <Toolbar sx={{zIndex: "auto"}}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -81,18 +90,16 @@ const DashBoard = () => {
           </Typography>
           <div>
               <IconButton
+                id={userPopperId}
                 size="large"
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                onClick={ToggleUserModal}
+                onClick={handleUserPopperAnchorEl}
                 color="inherit"
               >
                 <AccountCircle 
                 id="userIcon"
-                />
-                <UserModal
-                open={openUserModal}
                 />
               </IconButton>
               <Menu
@@ -115,6 +122,10 @@ const DashBoard = () => {
               </Menu>
             </div>
         </Toolbar>
+                <UserModal 
+                id={userPopperId} 
+                open={userPopperOpen} 
+                anchorEl={userPopperAnchorEl}/>
       </AppBar>
       {
       openMenu && 
@@ -250,4 +261,27 @@ export default DashBoard;
           eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
           posuere sollicitudin aliquam ultrices sagittis orci a.
         </Typography>
+
+
+        const [userAnchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+
+        const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+          setAnchorEl(anchorEl ? null : event.currentTarget);
+        };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popper' : undefined;
+
+  return (
+    <div>
+      <button aria-describedby={id} type="button" onClick={handleClick}>
+        Toggle Popper
+      </button>
+      <Popper id={id} open={open} anchorEl={anchorEl}>
+        <Box sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
+          The content of the Popper.
+        </Box>
+      </Popper>
+    </div>
+  );
  */
